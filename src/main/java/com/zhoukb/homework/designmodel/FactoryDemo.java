@@ -1,9 +1,10 @@
-package com.zhoukb.homework.designmodel;
+package main.java.com.zhoukb.homework.designmodel;
 
 public class FactoryDemo {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
-        NativePaymentFactory nativePaymentFactory = new NativePaymentFactory();
-        NativePayment payment = nativePaymentFactory.createPayment(AliPay.class);
+        OutPaymentFactory outPaymentFactory = new OutPaymentFactory();
+//        NativePayment payment = nativePaymentFactory.createPayment(AliPay.class);
+        Payment payment = outPaymentFactory.createPayment(ApplePay.class);
         payment.pay();
     }
 }
