@@ -1,18 +1,15 @@
 package com.zhoukb.homework.designmodel.proxy.dbroute.proxy;
 
 import com.zhoukb.homework.designmodel.proxy.dbroute.db.DynamicDataSourceEntity;
-import com.zhoukb.homework.designmodel.proxy.dynamicproxy.gpproxy.proxy.GPClassLoader;
-import com.zhoukb.homework.designmodel.proxy.dynamicproxy.gpproxy.proxy.GPInvocationHandler;
-import com.zhoukb.homework.designmodel.proxy.dynamicproxy.gpproxy.proxy.GPProxy;
+import com.zhoukb.homework.designmodel.proxy.dynamicproxy.kbproxy.proxy.KBClassLoader;
+import com.zhoukb.homework.designmodel.proxy.dynamicproxy.kbproxy.proxy.KBInvocationHandler;
+import com.zhoukb.homework.designmodel.proxy.dynamicproxy.kbproxy.proxy.KBProxy;
 
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Tom.
- */
-public class OrderServiceDynamicProxy implements GPInvocationHandler {
+public class OrderServiceDynamicProxy implements KBInvocationHandler {
 
     private SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
 
@@ -20,7 +17,7 @@ public class OrderServiceDynamicProxy implements GPInvocationHandler {
     public Object getInstance(Object proxyObj) {
         this.proxyObj = proxyObj;
         Class<?> clazz = proxyObj.getClass();
-        return GPProxy.newProxyInstance(new GPClassLoader(),clazz.getInterfaces(),this);
+        return KBProxy.newProxyInstance(new KBClassLoader(),clazz.getInterfaces(),this);
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
